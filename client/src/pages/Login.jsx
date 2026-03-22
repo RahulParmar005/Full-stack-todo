@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../components/assets/api";
 
 const Login = ({ setUser }) => {
 
@@ -15,7 +16,7 @@ const Login = ({ setUser }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/login", form);
+            const res = await axios.post(`${API_URL}/api/auth/login`, form, { withCredentials: true });
             setUser(res.data.user);
             navigate("/");
         } catch (err) {

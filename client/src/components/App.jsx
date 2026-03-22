@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NotFound from "./NotFound";
+import { API_URL } from "./assets/api";
 axios.defaults.withCredentials = true;     
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/auth/me");
+                const res = await axios.get(`${API_URL}/api/auth/me`);
                 setUser(res.data.user);
             } catch (err) {
                 setUser(null);
